@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -65,12 +66,15 @@
             this.pictureBox34 = new System.Windows.Forms.PictureBox();
             this.pictureBox35 = new System.Windows.Forms.PictureBox();
             this.pictureBox36 = new System.Windows.Forms.PictureBox();
-            this.pictureBox37 = new System.Windows.Forms.PictureBox();
+            this.player = new System.Windows.Forms.PictureBox();
             this.pictureBox38 = new System.Windows.Forms.PictureBox();
             this.pictureBox39 = new System.Windows.Forms.PictureBox();
             this.pictureBox40 = new System.Windows.Forms.PictureBox();
             this.pictureBox41 = new System.Windows.Forms.PictureBox();
             this.pictureBox42 = new System.Windows.Forms.PictureBox();
+            this.gameTimer = new System.Windows.Forms.Timer(this.components);
+            this.deathCount = new System.Windows.Forms.Label();
+            this.pictureBox37 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -107,12 +111,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -522,17 +527,17 @@
             this.pictureBox36.TabStop = false;
             this.pictureBox36.Tag = "coin";
             // 
-            // pictureBox37
+            // player
             // 
-            this.pictureBox37.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox37.Image = global::_2dGame.Properties.Resources.player;
-            this.pictureBox37.Location = new System.Drawing.Point(62, 118);
-            this.pictureBox37.Name = "pictureBox37";
-            this.pictureBox37.Size = new System.Drawing.Size(29, 29);
-            this.pictureBox37.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox37.TabIndex = 36;
-            this.pictureBox37.TabStop = false;
-            this.pictureBox37.Tag = "player";
+            this.player.BackColor = System.Drawing.Color.Transparent;
+            this.player.Image = global::_2dGame.Properties.Resources.player;
+            this.player.Location = new System.Drawing.Point(62, 113);
+            this.player.Name = "player";
+            this.player.Size = new System.Drawing.Size(29, 29);
+            this.player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.player.TabIndex = 36;
+            this.player.TabStop = false;
+            this.player.Tag = "player";
             // 
             // pictureBox38
             // 
@@ -594,17 +599,48 @@
             this.pictureBox42.TabStop = false;
             this.pictureBox42.Tag = "obstacle";
             // 
+            // gameTimer
+            // 
+            this.gameTimer.Interval = 20;
+            this.gameTimer.Tick += new System.EventHandler(this.mainTimerEvent);
+            // 
+            // deathCount
+            // 
+            this.deathCount.AutoSize = true;
+            this.deathCount.BackColor = System.Drawing.Color.Black;
+            this.deathCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deathCount.ForeColor = System.Drawing.Color.White;
+            this.deathCount.Location = new System.Drawing.Point(0, 1);
+            this.deathCount.Name = "deathCount";
+            this.deathCount.Size = new System.Drawing.Size(101, 25);
+            this.deathCount.TabIndex = 42;
+            this.deathCount.Text = "Death: 0";
+            // 
+            // pictureBox37
+            // 
+            this.pictureBox37.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox37.Image = global::_2dGame.Properties.Resources.obstacle;
+            this.pictureBox37.Location = new System.Drawing.Point(46, 453);
+            this.pictureBox37.Name = "pictureBox37";
+            this.pictureBox37.Size = new System.Drawing.Size(21, 20);
+            this.pictureBox37.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox37.TabIndex = 43;
+            this.pictureBox37.TabStop = false;
+            this.pictureBox37.Tag = "obstacle";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 661);
+            this.Controls.Add(this.pictureBox37);
+            this.Controls.Add(this.deathCount);
             this.Controls.Add(this.pictureBox42);
             this.Controls.Add(this.pictureBox41);
             this.Controls.Add(this.pictureBox40);
             this.Controls.Add(this.pictureBox39);
             this.Controls.Add(this.pictureBox38);
-            this.Controls.Add(this.pictureBox37);
+            this.Controls.Add(this.player);
             this.Controls.Add(this.pictureBox36);
             this.Controls.Add(this.pictureBox35);
             this.Controls.Add(this.pictureBox34);
@@ -643,7 +679,10 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.gameClose);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -680,12 +719,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -729,12 +769,15 @@
         private System.Windows.Forms.PictureBox pictureBox34;
         private System.Windows.Forms.PictureBox pictureBox35;
         private System.Windows.Forms.PictureBox pictureBox36;
-        private System.Windows.Forms.PictureBox pictureBox37;
+        private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.PictureBox pictureBox38;
         private System.Windows.Forms.PictureBox pictureBox39;
         private System.Windows.Forms.PictureBox pictureBox40;
         private System.Windows.Forms.PictureBox pictureBox41;
         private System.Windows.Forms.PictureBox pictureBox42;
+        private System.Windows.Forms.Timer gameTimer;
+        private System.Windows.Forms.Label deathCount;
+        private System.Windows.Forms.PictureBox pictureBox37;
     }
 }
 
