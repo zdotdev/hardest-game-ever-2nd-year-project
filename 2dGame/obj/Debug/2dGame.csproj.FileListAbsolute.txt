@@ -1,0 +1,10 @@
+C:\Users\MSI Laptop\source\repos\2dGame\2dGame\bin\Debug\2dGame.exe.config
+C:\Users\MSI Laptop\source\repos\2dGame\2dGame\bin\Debug\2dGame.exe
+C:\Users\MSI Laptop\source\repos\2dGame\2dGame\bin\Debug\2dGame.pdb
+C:\Users\MSI Laptop\source\repos\2dGame\2dGame\obj\Debug\2dGame.csproj.AssemblyReference.cache
+C:\Users\MSI Laptop\source\repos\2dGame\2dGame\obj\Debug\_2dGame.Form1.resources
+C:\Users\MSI Laptop\source\repos\2dGame\2dGame\obj\Debug\_2dGame.Properties.Resources.resources
+C:\Users\MSI Laptop\source\repos\2dGame\2dGame\obj\Debug\2dGame.csproj.GenerateResource.cache
+C:\Users\MSI Laptop\source\repos\2dGame\2dGame\obj\Debug\2dGame.csproj.CoreCompileInputs.cache
+C:\Users\MSI Laptop\source\repos\2dGame\2dGame\obj\Debug\2dGame.exe
+C:\Users\MSI Laptop\source\repos\2dGame\2dGame\obj\Debug\2dGame.pdb
